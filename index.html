@@ -60,9 +60,28 @@
   }
   footer nav { margin-bottom: 16px; }
   footer nav a { margin-right: 18px; display: inline-block; }
+  .stores { display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0 0; }
+  .store {
+    display: flex; flex-direction: column; justify-content: center;
+    min-width: 172px; padding: 9px 20px;
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 10px; text-decoration: none; color: var(--text);
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .store:hover, .store:focus-visible {
+    color: var(--text); border-color: rgba(255,255,255,0.28);
+    background: #1a1d23;
+  }
+  .store i {
+    font-style: normal; font-size: 0.68rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--faint);
+  }
+  .store b { font-size: 1.05rem; font-weight: 600; letter-spacing: -0.01em; }
+
   @media (max-width: 480px) {
     .wrap { padding: 40px 18px 32px; }
     h1 { font-size: 2.1rem; }
+    .store { flex: 1 1 100%; }
   }
 </style>
 </head>
@@ -76,6 +95,15 @@
       A wellness app that keeps training, nutrition, activity, and mind &amp; wellness
       in one place &mdash; so the whole picture is easier to see than any single number.
     </p>
+
+    <div class="stores">
+      <a class="store" href="https://apps.apple.com/us/app/swithai/id6783848103">
+        <i>Download on the</i><b>App Store</b>
+      </a>
+      <a class="store" href="https://play.google.com/store/apps/details?id=com.wellnesschampion.app">
+        <i>Get it on</i><b>Google Play</b>
+      </a>
+    </div>
   </header>
 
   <h2>What it does</h2>
@@ -90,11 +118,11 @@
     </li>
     <li style="--accent: var(--terra)">
       <b>Activity</b>
-      <span>Steps, active minutes, cardio sessions, and everyday movement.</span>
+      <span>Log cardio sessions and see daily goals as rings.</span>
     </li>
     <li style="--accent: var(--azure)">
       <b>Mind &amp; Wellness</b>
-      <span>Breathing sessions, mood journaling, and sleep records.</span>
+      <span>Breathing sessions, stretching and mobility routines, mood and sleep logs.</span>
     </li>
     <li style="--accent: var(--gold)">
       <b>Progress</b>
