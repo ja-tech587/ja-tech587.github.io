@@ -61,7 +61,7 @@
   <header>
     <p class="tag">Legal</p>
     <h1>Privacy Policy</h1>
-    <p class="preamble">Jason Abbamonte LLC, a Texas limited liability company doing business as swithAI ("swithAI," "we," "us," or "our"), is responsible for the personal data described in this policy. Last updated September 3, 2026.</p>
+    <p class="preamble">Jason Abbamonte LLC, a Texas limited liability company doing business as swithAI ("swithAI," "we," "us," or "our"), is responsible for the personal data described in this policy. Last updated September 8, 2026.</p>
   </header>
 
     <section>
@@ -81,13 +81,14 @@
       <p>Account and billing identifiers: a Firebase user identifier, and, if you subscribe, Stripe customer and subscription identifiers. We do not receive or store your full payment card details; those are handled by the payment processor.</p>
       <p>Favorites and app preferences: favorite exercises, favorite cardio activities, accent color, daily water goal, and custom macro targets.</p>
       <p>Apple Health and Health Connect data: if you grant permission, the app can read your daily step count, active energy, water intake, and sleep from Apple Health on iOS or Health Connect on Android. Permission is asked for each of these four types separately, and the app reads only the types you allow. For sleep, the app reads the night's recorded sleep stages, stores the total hours slept, and shows the stage breakdown on your device only. Values read this way are stored in your own account records alongside the data you enter by hand, and each one is labelled as coming from the health platform so you can tell the two apart. The app never writes anything back to Apple Health or Health Connect.</p>
-      <p>We do NOT collect your height, your weight, or heart rate data, and we do not read heart rate, heart rate variability, or body-composition data from Apple Health or Health Connect. We do not collect GPS or location data.</p>
+      <p>Location and recorded runs (iOS only): on iOS, if you grant location permission, the app reads your device's precise location in two situations only — while you are recording a run, walk, hike or ride on the Activity Coaching screen, and when you tap the locate control to center the map on where you are. When you save a run we store its route as a series of coordinates with timestamps, together with the start and end time, duration, distance, and activity type. The app asks for 'While Using the App' permission only and never accesses your location in the background; recording stops when you leave the tracking screen. The Android app does not request location permission and does not collect location data.</p>
+      <p>We do NOT collect your height, your weight, or heart rate data, and we do not read heart rate, heart rate variability, or body-composition data from Apple Health or Health Connect.</p>
     </section>
 
     <section>
       <h2>Apple Privacy Label Categories</h2>
       <p>For clarity, and so this policy and our App Store privacy labels describe the same practices, here is how the above maps to Apple's categories:</p>
-      <p>• Contact Info — email address, used for account sign-in and support<br>• Health &amp; Fitness — workouts, nutrition and hydration logs, supplement logs, mood, sleep, activity, and health readiness answers<br>• User Content — photographs you capture for food and grocery recognition<br>• Identifiers — Firebase user identifier and your app account identity<br>• Purchases — subscription tier and status, and Stripe customer/subscription identifiers<br>• Usage Data — screen views, feature interactions, and session duration<br>• Diagnostics — error and reliability information surfaced in the app</p>
+      <p>• Contact Info — email address, used for account sign-in and support<br>• Health &amp; Fitness — workouts, nutrition and hydration logs, supplement logs, mood, sleep, activity, and health readiness answers<br>• User Content — photographs you capture for food and grocery recognition<br>• Identifiers — Firebase user identifier and your app account identity<br>• Purchases — subscription tier and status, and Stripe customer/subscription identifiers<br>• Precise Location (iOS) — your device's location while you record a run or tap the locate control, and the route coordinates of the runs you save, linked to your account<br>• Usage Data — screen views, feature interactions, and session duration<br>• Diagnostics — error and reliability information surfaced in the app</p>
       <p>We do not use any of these categories for tracking across apps or websites owned by other companies, and we do not use them for third-party advertising.</p>
     </section>
 
@@ -99,7 +100,7 @@
 
     <section>
       <h2>How We Use It</h2>
-      <p>Your data is used to personalize your wellness experience — to generate workout plans, nutrition guidance, meal plans, and activity recommendations tailored to your profile and goals — and to operate your account, subscription, and support requests.</p>
+      <p>Your data is used to personalize your wellness experience — to generate workout plans, nutrition guidance, meal plans, and activity recommendations tailored to your profile and goals — on iOS, to show your position on the map and to record and replay the routes of runs you save, and to operate your account, subscription, and support requests.</p>
       <p>We do not use your data for advertising, for cross-app tracking, or for building profiles for any purpose beyond delivering the app's features to you.</p>
     </section>
 
@@ -121,8 +122,8 @@
 
     <section>
       <h2>Where It's Stored</h2>
-      <p>Your wellness and profile data is stored on the Internet Computer blockchain through canister smart contracts. This means it is decentralized and not held on a traditional centralized server.</p>
-      <p>Please understand what that implies: data written to a blockchain-backed canister is designed to resist tampering. When you delete your account we remove your data from the canister's active state as described below, but you should not assume that data committed to a decentralized ledger can be erased as completely as data on a conventional server.</p>
+      <p>Your wellness and profile data is stored on the Internet Computer blockchain through canister smart contracts. This means it is decentralized and not held on a traditional centralized server. The runs you save on iOS are stored there too: the route coordinates and timestamps, start and end time, duration, and distance of each one.</p>
+      <p>Please understand what that implies: data written to a blockchain-backed canister is designed to resist tampering. When you delete your account we remove your data from the canister's active state as described below, but you should not assume that data committed to a decentralized ledger can be erased as completely as data on a conventional server. This applies to the route coordinates of your saved runs as much as to anything else you log.</p>
     </section>
 
     <section>
@@ -140,14 +141,15 @@
       <p>• Resend — transactional email delivery. Used for the parental-consent email only. Receives the recipient's email address, the parent or guardian name, and the display name on the account the request concerns.</p>
       <p>• USDA FoodData Central — food and nutrition lookup. Receives the food search text you type. It does not receive your identity or any other profile data.</p>
       <p>• ExerciseDB, via RapidAPI — exercise demonstration imagery. Receives the name of the exercise being displayed. It does not receive your identity or any of your logged data.</p>
-      <p>• Google LLC (Firebase) — authentication and crash reporting (Firebase Crashlytics). Receives your sign-in identifiers, as described under 'Account &amp; Sign-In', and crash logs and diagnostic data about app stability, such as device model, operating system version, and the state of the app at the time of a crash.</p>
-      <p>That is the complete list of third parties that receive your data. Each provider handles what it receives under its own privacy policy, which we do not control.</p>
+      <p>• Google LLC (Firebase and, on iOS, Google Maps) — authentication and crash reporting (Firebase Crashlytics), and on iOS the map on the Activity Coaching screen (Google Maps SDK). Receives your sign-in identifiers, as described under 'Account &amp; Sign-In'; crash logs and diagnostic data about app stability, such as device model, operating system version, and the state of the app at the time of a crash; and, on iOS whenever the map is on screen, the requests needed to draw it: our Maps API key, the app's identifier, and the area of the map being shown. While you record a run the map follows you, so that area reflects where you are. The route line is drawn on your device, and your saved routes are stored only on our application backend, not sent to Google. Google's own privacy policy applies to the map: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a>. The Android app does not include the map.</p>
+      <p>That is the complete list of third parties that receive your data, and for each one the complete description of what it receives; where a provider receives data through more than one path, as Google does through Firebase and through the map, every path is listed. Each provider handles what it receives under its own privacy policy, which we do not control.</p>
     </section>
 
     <section>
       <h2>Your Rights &amp; Data Deletion</h2>
       <p>You have the right to request deletion of your account and all associated personal data at any time through the app settings or by contacting us at <a href="mailto:support@getswith.com">support@getswith.com</a>. We will process deletion requests within a reasonable timeframe.</p>
-      <p>You may also request a copy of the data we hold about you, or ask us to correct information that is inaccurate. Deleting your account removes your data from our application backend; it does not retroactively affect data already transmitted to a service provider listed above, which is governed by that provider's own policy.</p>
+      <p>You may also request a copy of the data we hold about you, or ask us to correct information that is inaccurate. Deleting your account removes your data from our application backend, including every run you have saved and its route; it does not retroactively affect data already transmitted to a service provider listed above, which is governed by that provider's own policy.</p>
+      <p>On iOS you can also delete individual runs at any time from the Routes tab of the Activity Coaching screen, without deleting your account.</p>
     </section>
 
     <section>
