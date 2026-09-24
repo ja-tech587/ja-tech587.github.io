@@ -4,12 +4,33 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>swithAI — Wellness, tracked simply</title>
-<meta name="description" content="swithAI is a wellness app for training, nutrition, activity, and mind &amp; wellness. Operated by Jason Abbamonte LLC.">
+<meta name="description" content="swithAI keeps training, nutrition, activity, and mind &amp; wellness in one place, so the whole picture is easier to see than any single number. Free on iPhone and Android.">
+<link rel="canonical" href="https://getswith.com/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/assets/icon-512.png">
+<meta name="theme-color" content="#08090c">
+
+<!-- Link previews -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="swithAI">
+<meta property="og:title" content="swithAI — Wellness, tracked simply">
+<meta property="og:description" content="Training, nutrition, activity, and mind &amp; wellness in one place. Free on iPhone and Android.">
+<meta property="og:url" content="https://getswith.com/">
+<meta property="og:image" content="https://getswith.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="swithAI — Wellness, tracked simply">
+<meta name="twitter:description" content="Training, nutrition, activity, and mind &amp; wellness in one place. Free on iPhone and Android.">
+<meta name="twitter:image" content="https://getswith.com/assets/og.png">
+
 <style>
   :root {
     --bg: #08090c;
     --panel: #14161b;
+    --panel-2: #1a1d23;
     --line: rgba(255,255,255,0.09);
+    --line-strong: rgba(255,255,255,0.22);
     --text: #ffffff;
     --dim: rgba(255,255,255,0.62);
     --faint: rgba(255,255,255,0.40);
@@ -17,8 +38,12 @@
     --green: #22C55E;
     --terra: #E8785F;
     --azure: #60a5fa;
+    --violet: #a78bfa;
+    --radius: 12px;
   }
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   body {
     margin: 0;
     background: var(--bg);
@@ -27,147 +52,436 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 680px; margin: 0 auto; padding: 56px 20px 40px; }
-  header { border-bottom: 1px solid var(--line); padding-bottom: 32px; }
-  h1 { font-size: 2.6rem; letter-spacing: -0.02em; margin: 0 0 6px; }
-  .tag {
-    font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--gold); margin: 0 0 22px; font-weight: 600;
-  }
-  .lede { font-size: 1.1rem; color: var(--dim); margin: 0; }
-  h2 {
-    font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--faint); margin: 44px 0 16px; font-weight: 700;
-  }
-  p { margin: 0 0 14px; color: var(--dim); }
-  ul.pillars { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
-  ul.pillars li {
-    background: var(--panel); border: 1px solid var(--line);
-    border-left: 3px solid var(--accent, var(--gold));
-    border-radius: 10px; padding: 14px 16px;
-  }
-  ul.pillars b { display: block; color: var(--text); font-size: 0.95rem; margin-bottom: 2px; }
-  ul.pillars span { color: var(--faint); font-size: 0.88rem; }
-  .note {
-    background: var(--panel); border: 1px solid var(--line);
-    border-radius: 10px; padding: 16px; font-size: 0.88rem; color: var(--faint);
-  }
   a { color: var(--azure); }
   a:hover { color: #93c5fd; }
-  footer {
-    margin-top: 52px; padding-top: 26px; border-top: 1px solid var(--line);
-    font-size: 0.85rem; color: var(--faint);
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+  .skip {
+    position: absolute; left: -999px; top: 8px; z-index: 100;
+    background: var(--gold); color: #111; padding: 8px 14px; border-radius: 8px; font-weight: 600;
   }
-  footer nav { margin-bottom: 16px; }
-  footer nav a { margin-right: 18px; display: inline-block; }
-  .stores { display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0 0; }
-  .store {
-    display: flex; flex-direction: column; justify-content: center;
-    min-width: 172px; padding: 9px 20px;
-    background: var(--panel); border: 1px solid var(--line);
-    border-radius: 10px; text-decoration: none; color: var(--text);
-    transition: border-color 0.15s ease, background 0.15s ease;
-  }
-  .store:hover, .store:focus-visible {
-    color: var(--text); border-color: rgba(255,255,255,0.28);
-    background: #1a1d23;
-  }
-  .store i {
-    font-style: normal; font-size: 0.68rem; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--faint);
-  }
-  .store b { font-size: 1.05rem; font-weight: 600; letter-spacing: -0.01em; }
+  .skip:focus { left: 12px; }
 
+  /* ── Header ── */
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(8,9,12,0.86);
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 60px; }
+  .logo { display: inline-flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 800; font-size: 1.1rem; letter-spacing: -0.01em; }
+  .logo img { width: 30px; height: 30px; border-radius: 8px; }
+  .site-nav { display: flex; gap: 22px; }
+  .site-nav a { color: var(--dim); text-decoration: none; font-size: 0.9rem; }
+  .site-nav a:hover { color: var(--text); }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--gold); color: #111; text-decoration: none;
+    border-radius: 999px; padding: 10px 20px; font-size: 0.9rem; font-weight: 700;
+    transition: filter 0.15s ease;
+  }
+  .btn:hover { color: #111; filter: brightness(1.08); }
+  .btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--line-strong); }
+  .btn.ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.4); }
+  .btn.small { padding: 8px 16px; font-size: 0.85rem; }
+
+  /* ── Sections ── */
+  section { padding: 56px 0; border-top: 1px solid var(--line); }
+  section.hero { border-top: 0; padding: 64px 0 56px; }
+  .kicker {
+    font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); font-weight: 700; margin: 0 0 12px;
+  }
+  h2 { font-size: 1.7rem; letter-spacing: -0.02em; margin: 0 0 8px; line-height: 1.2; }
+  .sub { color: var(--dim); margin: 0 0 28px; max-width: 620px; }
+  p { color: var(--dim); }
+
+  /* ── Hero ── */
+  .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
+  .hero h1 { font-size: 3rem; letter-spacing: -0.025em; line-height: 1.08; margin: 0 0 14px; }
+  .lede { font-size: 1.15rem; color: var(--dim); margin: 0 0 24px; max-width: 520px; }
+  .stores { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 0 0 14px; }
+  .stores a { display: inline-flex; border-radius: 8px; }
+  .stores img { height: 48px; width: auto; display: block; }
+  .store-text {
+    display: flex; flex-direction: column; justify-content: center;
+    height: 48px; min-width: 150px; padding: 0 16px 0 14px;
+    background: #000; border: 1px solid #a6a6a6; border-radius: 8px;
+    text-decoration: none; color: #fff; line-height: 1.1;
+  }
+  .store-text i { font-style: normal; font-size: 0.6rem; letter-spacing: 0.04em; color: #ddd; text-transform: uppercase; }
+  .store-text b { font-size: 1.05rem; font-weight: 600; }
+  .store-text:hover { color: #fff; border-color: #fff; }
+  .microtrust { font-size: 0.82rem; color: var(--faint); margin: 0; }
+  .microtrust span { white-space: nowrap; }
+
+  /* Phone frame: a real screenshot when present, the app mark otherwise. */
+  .phone {
+    position: relative; width: 250px; aspect-ratio: 9 / 19; margin: 0 auto;
+    border: 3px solid #2a2d34; border-radius: 36px; overflow: hidden;
+    background: radial-gradient(ellipse at 50% 30%, #1c1f26 0%, #0b0c10 70%);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(255,255,255,0.05);
+  }
+  .phone img.shot { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .phone .mark {
+    position: absolute; inset: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 14px;
+  }
+  .phone .mark img { width: 88px; height: 88px; border-radius: 22px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+  .phone .mark b { font-size: 1.1rem; letter-spacing: -0.01em; }
+  .phone .mark small { color: var(--faint); font-size: 0.75rem; text-align: center; padding: 0 22px; }
+
+  /* ── Features ── */
+  .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .feat {
+    background: var(--panel); border: 1px solid var(--line);
+    border-left: 3px solid var(--accent, var(--gold)); border-radius: var(--radius); padding: 16px 18px;
+  }
+  .feat h3 { margin: 0 0 4px; font-size: 1rem; }
+  .feat p { margin: 0; font-size: 0.9rem; color: var(--faint); }
+  .health-note { margin: 18px 0 0; font-size: 0.95rem; }
+
+  /* ── Screens ── */
+  .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .shots figure { margin: 0; text-align: center; }
+  .shots .phone { width: 200px; border-radius: 30px; }
+  .shots figcaption { margin-top: 12px; color: var(--dim); font-size: 0.9rem; }
+
+  /* ── Pricing ── */
+  .tiers { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: stretch; }
+  .tier { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; display: flex; flex-direction: column; }
+  .tier.hl { border-color: rgba(214,179,106,0.6); box-shadow: 0 0 0 1px rgba(214,179,106,0.25), 0 0 40px rgba(214,179,106,0.08); }
+  .tier h3 { margin: 0 0 6px; font-size: 1.15rem; }
+  .price { font-size: 1.6rem; font-weight: 800; margin: 0 0 4px; letter-spacing: -0.02em; }
+  .price small { font-size: 0.85rem; font-weight: 500; color: var(--faint); }
+  .price-note { font-size: 0.82rem; color: var(--faint); margin: 0 0 16px; }
+  .tier ul { margin: 0 0 20px; padding: 0; list-style: none; font-size: 0.92rem; color: var(--dim); }
+  .tier li { padding: 6px 0 6px 24px; position: relative; border-top: 1px solid var(--line); }
+  .tier li::before { content: "✓"; position: absolute; left: 2px; color: var(--green); font-weight: 700; }
+  .tier li.plus::before { color: var(--gold); }
+  .tier .btn { margin-top: auto; align-self: flex-start; }
+  .renew { font-size: 0.8rem; color: var(--faint); margin: 14px 0 0; }
+
+  /* ── FAQ ── */
+  .faq details { border-top: 1px solid var(--line); padding: 4px 0; }
+  .faq details:last-child { border-bottom: 1px solid var(--line); }
+  .faq summary { cursor: pointer; padding: 12px 0; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; color: var(--faint); font-size: 1.2rem; flex-shrink: 0; }
+  .faq details[open] summary::after { content: "–"; }
+  .faq p { margin: 0 0 14px; font-size: 0.95rem; }
+
+  /* ── Safety + company ── */
+  .note {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 16px 18px; font-size: 0.9rem; color: var(--faint);
+  }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .two-col h2 { font-size: 1.2rem; }
+
+  /* ── Final CTA + footer ── */
+  .cta { text-align: center; }
+  .cta .stores { justify-content: center; }
+  .cta .lede { margin: 0 auto 24px; }
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: 0.85rem; color: var(--faint); }
+  footer .row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
+  footer nav { display: flex; gap: 18px; flex-wrap: wrap; }
+  footer nav a, footer .row a { color: var(--dim); text-decoration: none; }
+  footer nav a:hover, footer .row a:hover { color: var(--text); }
+  footer .copy { margin: 16px 0 0; }
+
+  @media (max-width: 800px) {
+    .feat-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero h1 { font-size: 2.5rem; }
+  }
+  @media (max-width: 640px) {
+    .site-nav { display: none; }
+    .hero-grid, .tiers, .two-col, .shots { grid-template-columns: 1fr; }
+    .hero-grid { gap: 36px; }
+    .hero .phone { width: 220px; }
+    /* One swipeable row instead of three stacked phones. */
+    .shots {
+      display: flex; gap: 16px; overflow-x: auto; padding: 4px 4px 12px;
+      scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+    }
+    .shots figure { flex: 0 0 180px; scroll-snap-align: start; }
+    .shots .phone { width: 180px; border-radius: 26px; }
+    section { padding: 44px 0; }
+    section.hero { padding: 44px 0; }
+    .hero h1 { font-size: 2.2rem; }
+    .lede { font-size: 1.05rem; }
+  }
   @media (max-width: 480px) {
-    .wrap { padding: 40px 18px 32px; }
-    h1 { font-size: 2.1rem; }
-    .store { flex: 1 1 100%; }
+    .feat-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
-<div class="wrap">
+<a class="skip" href="#main">Skip to content</a>
 
-  <header>
-    <p class="tag">Move &middot; Fuel &middot; Rest</p>
-    <h1>swithAI</h1>
-    <p class="lede">
-      A wellness app that keeps training, nutrition, activity, and mind &amp; wellness
-      in one place &mdash; so the whole picture is easier to see than any single number.
-    </p>
-
-    <div class="stores">
-      <a class="store" href="https://apps.apple.com/us/app/swithai/id6783848103">
-        <i>Download on the</i><b>App Store</b>
-      </a>
-      <a class="store" href="https://play.google.com/store/apps/details?id=com.wellnesschampion.app">
-        <i>Get it on</i><b>Google Play</b>
-      </a>
-    </div>
-  </header>
-
-  <h2>What it does</h2>
-  <ul class="pillars">
-    <li style="--accent: var(--gold)">
-      <b>Training</b>
-      <span>Log workouts &mdash; exercises, sets, reps, weight, and how hard it felt.</span>
-    </li>
-    <li style="--accent: var(--green)">
-      <b>Nutrition</b>
-      <span>Search a food database, enter meals manually, and track macros and hydration.</span>
-    </li>
-    <li style="--accent: var(--terra)">
-      <b>Activity</b>
-      <span>Steps, cardio sessions, and daily goals shown as rings.</span>
-    </li>
-    <li style="--accent: var(--azure)">
-      <b>Mind &amp; Wellness</b>
-      <span>Breathing sessions, stretching and mobility routines, mood and sleep logs.</span>
-    </li>
-    <li style="--accent: var(--gold)">
-      <b>Progress</b>
-      <span>Weekly trends and suggestions drawn from what you have actually logged.</span>
-    </li>
-  </ul>
-
-  <p style="margin-top:18px">
-    Steps, active energy, water and sleep can be read from Apple Health on
-    iPhone and Health Connect on Android, so they arrive without being typed
-    in. swithAI reads those values and never writes anything back.
-  </p>
-
-  <h2>Health &amp; safety</h2>
-  <p>
-    swithAI provides general wellness, fitness, and nutritional information for
-    educational purposes only. It is not intended to diagnose, treat, cure, or
-    prevent any disease or medical condition, and it is not a substitute for
-    professional medical, nutritional, or mental health advice.
-  </p>
-  <div class="note">
-    Talk to a qualified healthcare professional before starting any new exercise
-    or nutrition program, particularly if you have an existing medical condition
-    or are under medical supervision.
-  </div>
-
-  <h2>Company</h2>
-  <p>
-    swithAI is owned and operated by <b style="color:var(--text)">Jason Abbamonte LLC</b>,
-    a Texas limited liability company doing business as swithAI.
-  </p>
-  <p>
-    Questions, support, or formal notices:
-    <a href="mailto:support@getswith.com">support@getswith.com</a>
-  </p>
-
-  <footer>
-    <nav>
-      <a href="/privacy.html">Privacy Policy</a>
-      <a href="/terms.html">Terms of Service</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="swithAI home">
+      <img src="/assets/icon-512.png" alt="" width="30" height="30">
+      swithAI
+    </a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
       <a href="/support.html">Support</a>
     </nav>
-    &copy; 2026 Jason Abbamonte LLC d/b/a swithAI. All rights reserved.
-  </footer>
+    <a class="btn small" href="#download">Download</a>
+  </div>
+</header>
 
-</div>
+<main id="main">
+
+  <!-- 1 · Hero: the outcome first, the app beside it, official store badges, one trust line. -->
+  <section class="hero" id="download">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="kicker">Move · Fuel · Rest</p>
+        <h1>Wellness, tracked simply.</h1>
+        <p class="lede">
+          Training, nutrition, activity, and mind &amp; wellness in one place — so the
+          whole picture is easier to see than any single number.
+        </p>
+        <div class="stores">
+          <a href="https://apps.apple.com/us/app/swithai/id6783848103" aria-label="Download on the App Store">
+            <img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="143" height="48">
+          </a>
+          <!-- Drop Google's official badge at /assets/google-play-badge.png
+               (play.google.com/intl/en_us/badges) and swap this text link for
+               an <img> like the App Store one. -->
+          <a class="store-text" href="https://play.google.com/store/apps/details?id=com.wellnesschampion.app" aria-label="Get it on Google Play">
+            <i>Get it on</i><b>Google Play</b>
+          </a>
+        </div>
+        <p class="microtrust">
+          <span>Free to download</span> &nbsp;·&nbsp; <span>iPhone &amp; Android</span> &nbsp;·&nbsp;
+          <span>Reads Apple Health and Health Connect, never writes back</span>
+        </p>
+      </div>
+      <div class="phone" aria-hidden="true">
+        <div class="mark">
+          <img src="/assets/icon-512.png" alt="">
+          <b>swithAI</b>
+          <small>Training · Nutrition · Activity · Mind &amp; Wellness</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · Social proof: intentionally not shipped until real App Store review
+       quotes and the live rating are pasted in. Nothing here is invented.
+  <section id="reviews">
+    <div class="wrap">
+      <p class="kicker">What people say</p>
+      <div class="proof">
+        <blockquote>“…” <cite>★★★★★ App Store review</cite></blockquote>
+      </div>
+    </div>
+  </section>
+  -->
+
+  <!-- 3 · Features: the existing copy, as real headings. -->
+  <section id="features">
+    <div class="wrap">
+      <p class="kicker">What it does</p>
+      <h2>Four pillars, one picture.</h2>
+      <p class="sub">Each part of the day gets its own home, and the Progress tab reads them together.</p>
+      <div class="feat-grid">
+        <article class="feat" style="--accent: var(--gold)">
+          <h3>Training</h3>
+          <p>Log workouts — exercises, sets, reps, weight, and how hard it felt.</p>
+        </article>
+        <article class="feat" style="--accent: var(--green)">
+          <h3>Nutrition</h3>
+          <p>Search a food database, enter meals manually, and track macros and hydration.</p>
+        </article>
+        <article class="feat" style="--accent: var(--terra)">
+          <h3>Activity</h3>
+          <p>Steps, cardio sessions, and daily goals shown as rings.</p>
+        </article>
+        <article class="feat" style="--accent: var(--azure)">
+          <h3>Mind &amp; Wellness</h3>
+          <p>Breathing sessions, stretching and mobility routines, mood and sleep logs.</p>
+        </article>
+        <article class="feat" style="--accent: var(--gold)">
+          <h3>Progress</h3>
+          <p>Weekly trends and suggestions drawn from what you have actually logged.</p>
+        </article>
+        <article class="feat" style="--accent: var(--faint)">
+          <h3>Health sync</h3>
+          <p>Steps, active energy, water and sleep arrive from Apple Health on iPhone and Health Connect on Android. Read-only — never written back.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · Product screenshots: intentionally not shipped until real app
+       screens exist. Drop three PNGs at /assets/screens/{workout-log,
+       activity-rings,weekly-trends}.png and uncomment. No placeholder
+       frames go live.
+  <section id="screens">
+    <div class="wrap">
+      <p class="kicker">In the app</p>
+      <h2>Log it, see it, adjust.</h2>
+      <p class="sub">A workout as you did it, today's rings, and the week's trend — the same three views you'll open most.</p>
+      <div class="shots">
+        <figure>
+          <div class="phone">
+            <div class="mark"><img src="/assets/icon-512.png" alt=""><small>Workout log</small></div>
+            <img class="shot" src="/assets/screens/workout-log.png" alt="The workout log: an exercise with its sets, reps and weight" onerror="this.remove()">
+          </div>
+          <figcaption>Workout log</figcaption>
+        </figure>
+        <figure>
+          <div class="phone">
+            <div class="mark"><img src="/assets/icon-512.png" alt=""><small>Activity rings</small></div>
+            <img class="shot" src="/assets/screens/activity-rings.png" alt="Today's activity rings: steps and active minutes against the daily goals" onerror="this.remove()">
+          </div>
+          <figcaption>Activity rings</figcaption>
+        </figure>
+        <figure>
+          <div class="phone">
+            <div class="mark"><img src="/assets/icon-512.png" alt=""><small>Weekly trends</small></div>
+            <img class="shot" src="/assets/screens/weekly-trends.png" alt="The Progress tab: the week's trends and suggestions" onerror="this.remove()">
+          </div>
+          <figcaption>Weekly trends</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+  -->
+
+  <!-- 5 · Pricing: what Free includes and what Plus adds, as the app's own paywall lists them. -->
+  <section id="pricing">
+    <div class="wrap">
+      <p class="kicker">Pricing</p>
+      <h2>Free to use. Plus for the long plan.</h2>
+      <p class="sub">The free version keeps working, and there is nothing to cancel. swithAI Plus extends the planner and adds the generated plans.</p>
+      <div class="tiers">
+        <div class="tier">
+          <h3>swithAI Free</h3>
+          <p class="price">$0</p>
+          <p class="price-note">No account tier to pick, no trial clock.</p>
+          <ul>
+            <li>Logging — workouts, runs with GPS, meals, macros</li>
+            <li>Water, sleep, mood, stretching and mobility</li>
+            <li>Apple Health and Health Connect</li>
+            <li>Streaks, history, personal records</li>
+            <li>Planner goes out up to 1 week</li>
+          </ul>
+          <a class="btn ghost" href="#download">Download free</a>
+        </div>
+        <div class="tier hl">
+          <h3>swithAI Plus</h3>
+          <p class="price">Monthly <small>subscription</small></p>
+          <p class="price-note">The price is shown in the App Store or Google Play before you subscribe.</p>
+          <ul>
+            <li>Everything in Free</li>
+            <li class="plus">Planner goes out up to 52 weeks</li>
+            <li class="plus">Generated training plans</li>
+            <li class="plus">Workout recommender</li>
+            <li class="plus">Meal planner and grocery list</li>
+          </ul>
+          <a class="btn" href="#download">Get the app, then upgrade inside it</a>
+        </div>
+      </div>
+      <p class="renew">swithAI Plus renews monthly until cancelled. Manage or cancel anytime in your Apple Account or Google Play account settings.</p>
+    </div>
+  </section>
+
+  <!-- 6 · FAQ -->
+  <section id="faq" class="faq">
+    <div class="wrap">
+      <p class="kicker">Questions</p>
+      <h2>Before you download.</h2>
+      <p class="sub">The things people ask first.</p>
+      <details>
+        <summary>Is my health data private?</summary>
+        <p>Yes. swithAI reads steps, active energy, water and sleep from Apple Health or Health Connect and never writes anything back. We do not sell, rent or share your personal data, and you can ask for everything to be deleted at any time. The details are in the <a href="/privacy.html">Privacy Policy</a>.</p>
+      </details>
+      <details>
+        <summary>Which phones does it work on?</summary>
+        <p>iPhone, from the App Store, and Android, from Google Play.</p>
+      </details>
+      <details>
+        <summary>Is it really free?</summary>
+        <p>The core app is free and stays free: logging, Health sync, streaks, history and a planner that runs a week ahead. swithAI Plus is a monthly subscription that takes the planner out to 52 weeks and adds generated training plans, the workout recommender and the meal planner with its grocery list. The price is shown in the store before you subscribe.</p>
+      </details>
+      <details>
+        <summary>Does it replace my doctor or dietitian?</summary>
+        <p>No. swithAI provides general wellness, fitness and nutritional information for educational purposes. It is not medical advice, and it is not a substitute for a qualified professional.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- 7 · Health &amp; safety and company: kept from the current page. -->
+  <section id="about">
+    <div class="wrap two-col">
+      <div>
+        <h2>Health &amp; safety</h2>
+        <p>
+          swithAI provides general wellness, fitness, and nutritional information for
+          educational purposes only. It is not intended to diagnose, treat, cure, or
+          prevent any disease or medical condition, and it is not a substitute for
+          professional medical, nutritional, or mental health advice.
+        </p>
+        <div class="note">
+          Talk to a qualified healthcare professional before starting any new exercise
+          or nutrition program, particularly if you have an existing medical condition
+          or are under medical supervision.
+        </div>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <p>
+          swithAI is owned and operated by <b style="color:var(--text)">Jason Abbamonte LLC</b>,
+          a Texas limited liability company doing business as swithAI.
+        </p>
+        <p>
+          Questions, support, or formal notices:
+          <a href="mailto:support@getswith.com">support@getswith.com</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · Final CTA -->
+  <section class="cta">
+    <div class="wrap">
+      <h2>See the whole picture.</h2>
+      <p class="lede">Download swithAI free on iPhone and Android.</p>
+      <div class="stores">
+        <a href="https://apps.apple.com/us/app/swithai/id6783848103" aria-label="Download on the App Store">
+          <img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="143" height="48">
+        </a>
+        <a class="store-text" href="https://play.google.com/store/apps/details?id=com.wellnesschampion.app" aria-label="Get it on Google Play">
+          <i>Get it on</i><b>Google Play</b>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <nav aria-label="Legal">
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+        <a href="/support.html">Support</a>
+        <a href="/delete-account.html">Delete Account</a>
+      </nav>
+      <a href="mailto:support@getswith.com">support@getswith.com</a>
+    </div>
+    <p class="copy">© 2026 Jason Abbamonte LLC d/b/a swithAI. All rights reserved.</p>
+  </div>
+</footer>
+
 </body>
 </html>
