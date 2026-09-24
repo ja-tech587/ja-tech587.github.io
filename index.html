@@ -88,7 +88,6 @@
 
   /* ── Sections ── */
   section { padding: 56px 0; border-top: 1px solid var(--line); }
-  section.hero { border-top: 0; padding: 64px 0 56px; }
   .kicker {
     font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
     color: var(--gold); font-weight: 700; margin: 0 0 12px;
@@ -98,9 +97,36 @@
   p { color: var(--dim); }
 
   /* ── Hero ── */
-  .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
-  .hero h1 { font-size: 3rem; letter-spacing: -0.025em; line-height: 1.08; margin: 0 0 14px; }
-  .lede { font-size: 1.15rem; color: var(--dim); margin: 0 0 24px; max-width: 520px; }
+  .hero {
+    position: relative; overflow: hidden; border-top: 0;
+    min-height: 560px; height: 100vh; height: 100svh;
+    display: flex; align-items: center; padding: 0;
+    background: #000;
+  }
+  .scenes { position: absolute; inset: 0; }
+  .scene {
+    position: absolute; inset: 0; opacity: 0;
+    transition: opacity 1.2s ease;
+  }
+  .scene.is-active { opacity: 1; }
+  .scene video {
+    width: 100%; height: 100%; display: block;
+    object-fit: cover; object-position: center;
+    background: #000 center / cover no-repeat;
+  }
+  .scrim {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(0deg, rgba(0,0,0,.55), transparent 32%),
+      linear-gradient(90deg, rgba(0,0,0,.74) 0%, rgba(0,0,0,.38) 52%, rgba(0,0,0,0) 78%);
+  }
+  .hero-content { position: relative; z-index: 1; width: 100%; padding-top: 80px; padding-bottom: 88px; }
+  .wordmark { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.01em; margin: 0 0 22px; color: var(--text); }
+  .hero h1 {
+    font-size: clamp(2.6rem, 7.2vw, 5.4rem); letter-spacing: -0.025em; line-height: 1.04;
+    margin: 0 0 16px; max-width: min(640px, 100%); text-shadow: 0 2px 24px rgba(0,0,0,0.6);
+  }
+  .lede { font-size: 1.15rem; color: rgba(255,255,255,0.8); margin: 0 0 24px; max-width: 520px; text-shadow: 0 1px 12px rgba(0,0,0,0.6); }
   .stores { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 0 0 14px; }
   .stores a { display: inline-flex; border-radius: 8px; }
   .stores img { height: 48px; width: auto; display: block; }
@@ -113,10 +139,24 @@
   .store-text i { font-style: normal; font-size: 0.6rem; letter-spacing: 0.04em; color: #ddd; text-transform: uppercase; }
   .store-text b { font-size: 1.05rem; font-weight: 600; }
   .store-text:hover { color: #fff; border-color: #fff; }
-  .microtrust { font-size: 0.82rem; color: var(--faint); margin: 0; }
+  .microtrust { font-size: 0.82rem; color: rgba(255,255,255,0.55); margin: 0; }
   .microtrust span { white-space: nowrap; }
+  .dots {
+    position: absolute; z-index: 2; left: 20px; bottom: 28px;
+    display: flex; gap: 8px; margin: 0; padding: 0;
+  }
+  .dot {
+    width: 22px; height: 6px; border-radius: 999px; border: 0; padding: 0; cursor: pointer;
+    background: rgba(255,255,255,0.35); transition: background 0.3s ease, width 0.3s ease;
+  }
+  .dot:hover { background: rgba(255,255,255,0.6); }
+  .dot.is-active { background: var(--gold); width: 34px; }
+  @media (prefers-reduced-motion: reduce) {
+    .scene { transition: none; }
+    .dot { transition: none; }
+  }
 
-  /* Phone frame: a real screenshot when present, the app mark otherwise. */
+  /* Phone frame, used by the screenshots section once it ships. */
   .phone {
     position: relative; width: 250px; aspect-ratio: 9 / 19; margin: 0 auto;
     border: 3px solid #2a2d34; border-radius: 36px; overflow: hidden;
@@ -193,13 +233,18 @@
 
   @media (max-width: 800px) {
     .feat-grid { grid-template-columns: repeat(2, 1fr); }
-    .hero h1 { font-size: 2.5rem; }
   }
   @media (max-width: 640px) {
     .site-nav { display: none; }
-    .hero-grid, .tiers, .two-col, .shots { grid-template-columns: 1fr; }
-    .hero-grid { gap: 36px; }
-    .hero .phone { width: 220px; }
+    .tiers, .two-col, .shots { grid-template-columns: 1fr; }
+    /* Stronger scrim over the whole frame so the copy reads on every scene. */
+    .scrim {
+      background:
+        linear-gradient(0deg, rgba(0,0,0,.72), transparent 45%),
+        linear-gradient(90deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.30) 70%, rgba(0,0,0,0) 100%);
+    }
+    .hero-content { padding-top: 96px; padding-bottom: 96px; }
+    .microtrust span { white-space: normal; }
     /* One swipeable row instead of three stacked phones. */
     .shots {
       display: flex; gap: 16px; overflow-x: auto; padding: 4px 4px 12px;
@@ -208,8 +253,7 @@
     .shots figure { flex: 0 0 180px; scroll-snap-align: start; }
     .shots .phone { width: 180px; border-radius: 26px; }
     section { padding: 44px 0; }
-    section.hero { padding: 44px 0; }
-    .hero h1 { font-size: 2.2rem; }
+    section.hero { padding: 0; }
     .lede { font-size: 1.05rem; }
   }
   @media (max-width: 480px) {
@@ -238,39 +282,60 @@
 
 <main id="main">
 
-  <!-- 1 · Hero: the outcome first, the app beside it, official store badges, one trust line. -->
+  <!-- 1 · Hero: a full-viewport cinematic background that cycles four
+       scenes, the copy and store CTAs on top. Assets live in /assets/hero/. -->
   <section class="hero" id="download">
-    <div class="wrap hero-grid">
-      <div>
-        <p class="kicker">Move · Fuel · Rest</p>
-        <h1>Wellness, tracked simply.</h1>
-        <p class="lede">
-          Training, nutrition, activity, and mind &amp; wellness in one place — so the
-          whole picture is easier to see than any single number.
-        </p>
-        <div class="stores">
-          <a href="https://apps.apple.com/us/app/swithai/id6783848103" aria-label="Download on the App Store">
-            <img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="143" height="48">
-          </a>
-          <!-- Drop Google's official badge at /assets/google-play-badge.png
-               (play.google.com/intl/en_us/badges) and swap this text link for
-               an <img> like the App Store one. -->
-          <a class="store-text" href="https://play.google.com/store/apps/details?id=com.wellnesschampion.app" aria-label="Get it on Google Play">
-            <i>Get it on</i><b>Google Play</b>
-          </a>
-        </div>
-        <p class="microtrust">
-          <span>Free to download</span> &nbsp;·&nbsp; <span>iPhone &amp; Android</span> &nbsp;·&nbsp;
-          <span>Reads Apple Health and Health Connect, never writes back</span>
-        </p>
+    <div class="scenes" id="scenes" aria-live="off">
+      <div class="scene is-active" role="img" aria-label="An athlete completing a deadlift in a dark gym">
+        <video muted playsinline loop preload="auto" poster="/assets/hero/bg-iron.jpg">
+          <source src="/assets/hero/bg-iron-motion.mp4" type="video/mp4">
+        </video>
       </div>
-      <div class="phone" aria-hidden="true">
-        <div class="mark">
-          <img src="/assets/icon-512.png" alt="">
-          <b>swithAI</b>
-          <small>Training · Nutrition · Activity · Mind &amp; Wellness</small>
-        </div>
+      <div class="scene" role="img" aria-label="A runner sprinting on a rainy city street at dawn">
+        <video muted playsinline loop preload="auto" poster="/assets/hero/bg-dawn.jpg">
+          <source src="/assets/hero/bg-dawn-motion.mp4" type="video/mp4">
+        </video>
       </div>
+      <div class="scene" role="img" aria-label="A person deepening a yoga stretch in a beam of light">
+        <video muted playsinline loop preload="auto" poster="/assets/hero/bg-still.jpg">
+          <source src="/assets/hero/bg-still-motion.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="scene" role="img" aria-label="Hands presenting a vibrant healthy bowl, steam rising">
+        <video muted playsinline loop preload="auto" poster="/assets/hero/bg-nutrition.jpg">
+          <source src="/assets/hero/bg-nutrition-motion.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div class="scrim" aria-hidden="true"></div>
+
+    <div class="wrap hero-content">
+      <p class="wordmark">swithAI</p>
+      <p class="kicker">Move · Fuel · Rest</p>
+      <h1>Wellness, tracked simply.</h1>
+      <p class="lede">Training, nutrition, activity, and mind &amp; wellness — all in one place.</p>
+      <div class="stores">
+        <a href="https://apps.apple.com/us/app/swithai/id6783848103" aria-label="Download on the App Store">
+          <img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="143" height="48">
+        </a>
+        <!-- Drop Google's official badge at /assets/google-play-badge.png
+             (play.google.com/intl/en_us/badges) and swap this text link for
+             an <img> like the App Store one. -->
+        <a class="store-text" href="https://play.google.com/store/apps/details?id=com.wellnesschampion.app" aria-label="Get it on Google Play">
+          <i>Get it on</i><b>Google Play</b>
+        </a>
+      </div>
+      <p class="microtrust">
+        <span>Free to download</span> &nbsp;·&nbsp; <span>iPhone &amp; Android</span> &nbsp;·&nbsp;
+        <span>Reads Apple Health and Health Connect, never writes back</span>
+      </p>
+    </div>
+
+    <div class="dots" id="dots">
+      <button type="button" class="dot is-active" aria-label="Show scene 1: deadlift in the gym" aria-current="true"></button>
+      <button type="button" class="dot" aria-label="Show scene 2: dawn run in the rain"></button>
+      <button type="button" class="dot" aria-label="Show scene 3: yoga stretch"></button>
+      <button type="button" class="dot" aria-label="Show scene 4: healthy bowl"></button>
     </div>
   </section>
 
@@ -482,6 +547,89 @@
     <p class="copy">© 2026 Jason Abbamonte LLC d/b/a swithAI. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+(() => {
+  const SCENE_MS = 5000;
+  const scenes = Array.from(document.querySelectorAll("#scenes .scene"));
+  const dots = Array.from(document.querySelectorAll("#dots .dot"));
+  const hero = document.querySelector(".hero");
+  if (scenes.length === 0 || dots.length !== scenes.length || !hero) return;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const hoverable = window.matchMedia("(hover: hover)");
+  let index = 0;
+  let timer = 0;
+  let hovered = false;
+
+  const videoOf = (scene) => scene.querySelector("video");
+  const cyclingAllowed = () => !reduced.matches && !document.hidden && !hovered;
+
+  function show(next, { play = true } = {}) {
+    index = (next + scenes.length) % scenes.length;
+    scenes.forEach((scene, i) => {
+      const active = i === index;
+      scene.classList.toggle("is-active", active);
+      const video = videoOf(scene);
+      if (!video) return;
+      if (active) {
+        if (play && !reduced.matches) {
+          try { video.currentTime = 0; } catch (_) {}
+          const p = video.play();
+          if (p && typeof p.catch === "function") p.catch(() => {});
+        } else {
+          video.pause();
+        }
+      } else {
+        video.pause();
+      }
+    });
+    dots.forEach((dot, i) => {
+      const active = i === index;
+      dot.classList.toggle("is-active", active);
+      if (active) dot.setAttribute("aria-current", "true");
+      else dot.removeAttribute("aria-current");
+    });
+    hero.dataset.scene = String(index);
+  }
+
+  function stop() {
+    if (timer) { window.clearTimeout(timer); timer = 0; }
+  }
+  function schedule() {
+    stop();
+    if (!cyclingAllowed()) return;
+    timer = window.setTimeout(() => { show(index + 1); schedule(); }, SCENE_MS);
+  }
+  function pauseAll() {
+    scenes.forEach((scene) => videoOf(scene)?.pause());
+  }
+  function resume() {
+    if (reduced.matches) return;
+    show(index);
+    schedule();
+  }
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => { show(i); schedule(); });
+  });
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) { stop(); pauseAll(); } else { resume(); }
+  });
+  if (hoverable.matches) {
+    hero.addEventListener("mouseenter", () => { hovered = true; stop(); pauseAll(); });
+    hero.addEventListener("mouseleave", () => { hovered = false; resume(); });
+  }
+  const onMotionChange = () => {
+    if (reduced.matches) { stop(); show(index, { play: false }); } else { resume(); }
+  };
+  if (typeof reduced.addEventListener === "function") reduced.addEventListener("change", onMotionChange);
+
+  // Reduced motion: the first scene as a still frame, nothing cycles.
+  show(0, { play: !reduced.matches });
+  schedule();
+})();
+</script>
 
 </body>
 </html>
