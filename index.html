@@ -130,15 +130,12 @@
   .stores { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 0 0 14px; }
   .stores a { display: inline-flex; border-radius: 8px; }
   .stores img { height: 48px; width: auto; display: block; }
-  .store-text {
-    display: flex; flex-direction: column; justify-content: center;
-    height: 48px; min-width: 150px; padding: 0 16px 0 14px;
-    background: #000; border: 1px solid #a6a6a6; border-radius: 8px;
-    text-decoration: none; color: #fff; line-height: 1.1;
-  }
-  .store-text i { font-style: normal; font-size: 0.6rem; letter-spacing: 0.04em; color: #ddd; text-transform: uppercase; }
-  .store-text b { font-size: 1.05rem; font-weight: 600; }
-  .store-text:hover { color: #fff; border-color: #fff; }
+  /* Google's badge PNG (646x250) has 41px of transparent padding on every side
+     around a 564x168 badge. Scale it so the visible badge is 48px tall, pull the
+     padding back with negative margins and clip, so the link box (and the 12px
+     gap) matches the visible badge exactly. */
+  .stores a.gplay { overflow: hidden; border-radius: 5px; }
+  .stores a.gplay img { height: calc(48px * 250 / 168); margin: calc(-48px * 41 / 168); }
   .microtrust { font-size: 0.82rem; color: rgba(255,255,255,0.55); margin: 0; }
   .microtrust span { white-space: nowrap; }
   .dots {
@@ -318,11 +315,8 @@
         <a href="https://apps.apple.com/us/app/swithai/id6783848103" aria-label="Download on the App Store">
           <img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="143" height="48">
         </a>
-        <!-- Drop Google's official badge at /assets/google-play-badge.png
-             (play.google.com/intl/en_us/badges) and swap this text link for
-             an <img> like the App Store one. -->
-        <a class="store-text" href="https://play.google.com/store/apps/details?id=com.wellnesschampion.app" aria-label="Get it on Google Play">
-          <i>Get it on</i><b>Google Play</b>
+        <a class="gplay" href="https://play.google.com/store/apps/details?id=com.wellnesschampion.app" target="_blank" rel="noopener">
+          <img src="/assets/google-play-badge.png" alt="GET IT ON Google Play" width="185" height="71">
         </a>
       </div>
       <p class="microtrust">
@@ -525,8 +519,8 @@
         <a href="https://apps.apple.com/us/app/swithai/id6783848103" aria-label="Download on the App Store">
           <img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="143" height="48">
         </a>
-        <a class="store-text" href="https://play.google.com/store/apps/details?id=com.wellnesschampion.app" aria-label="Get it on Google Play">
-          <i>Get it on</i><b>Google Play</b>
+        <a class="gplay" href="https://play.google.com/store/apps/details?id=com.wellnesschampion.app" target="_blank" rel="noopener">
+          <img src="/assets/google-play-badge.png" alt="GET IT ON Google Play" width="185" height="71">
         </a>
       </div>
     </div>
