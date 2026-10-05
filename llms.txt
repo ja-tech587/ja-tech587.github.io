@@ -1,0 +1,30 @@
+# swithAI
+
+> swithAI is an AI-powered fitness and wellness app for iOS and Android. It brings training, nutrition, activity, and mind and wellness tracking into one app, with goal-based coaching on top.
+
+swithAI is built and published by Jason Abbamonte LLC.
+
+## Get the app
+
+- [swithAI on the App Store](https://apps.apple.com/us/app/swithai/id6783848103): iOS
+- [swithAI on Google Play](https://play.google.com/store/apps/details?id=com.wellnesschampion.app): Android
+
+## What it covers
+
+- Training: log workouts from an exercise library and track sets and progress
+- Nutrition: log food and track calories and macronutrients against daily targets
+- Activity: track cardio and daily activity
+- Mind & Wellness: track mood, sleep, breathing and recovery practices
+- Goal: set a goal and follow a plan across the four pillars
+
+## Company and support
+
+- Website: https://getswith.com
+- Support: support@getswith.com
+- [Support](https://getswith.com/support.html)
+- [Privacy Policy](https://getswith.com/privacy.html)
+- [Terms of Service](https://getswith.com/terms.html)
+
+## Notes
+
+swithAI is for educational and wellness purposes only. It is not medical advice or a substitute for professional healthcare.
