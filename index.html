@@ -257,6 +257,24 @@
   @media (max-width: 480px) {
     .feat-grid { grid-template-columns: 1fr; }
   }
+  .example {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 12px; padding: 20px; margin: 0 0 14px;
+  }
+  .example .headline {
+    font-size: 1.25rem; font-weight: 700; letter-spacing: -0.01em;
+    color: var(--text); margin: 0 0 8px; line-height: 1.35;
+  }
+  .example p { margin: 0 0 16px; }
+  ul.workout { list-style: none; padding: 0; margin: 0 0 6px; display: grid; gap: 8px; }
+  ul.workout li {
+    display: flex; justify-content: space-between; gap: 14px;
+    border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px;
+    background: rgba(255,255,255,0.02);
+  }
+  ul.workout b { color: var(--text); font-size: 0.92rem; font-weight: 600; }
+  ul.workout span { color: var(--faint); font-size: 0.88rem; white-space: nowrap; }
+  .example .fineprint { font-size: 0.82rem; color: var(--faint); margin: 10px 0 0; }
 </style>
 <script type="application/ld+json">
 {
@@ -400,6 +418,45 @@
           <p>Steps, active energy, water and sleep arrive from Apple Health on iPhone and Health Connect on Android. Read-only — never written back.</p>
         </article>
       </div>
+    </div>
+  </section>
+
+  <!-- 3b · Training at home: one real bodyweight day from the app. -->
+  <section id="home-training">
+    <div class="wrap">
+  <h2>Training at home</h2>
+  <div class="example">
+    <p class="headline">A full legs &amp; glutes day. Zero equipment.</p>
+    <p>
+      swithAI doesn't assume a full gym — or any equipment at all. This is a
+      real day from a Workout Program in the app: six exercises, all
+      bodyweight, done anywhere you have a wall and a floor.
+    </p>
+
+    <img src="/assets/home-workout-example.jpg" alt="Wednesday Legs and Glutes workout day in swithAI — six bodyweight exercises: Glute Bridge, Bodyweight Squat, Reverse Lunge, Wall Sit, Single-Leg Glute Bridge, and Calf Raise" style="width:100%; border-radius:12px; border:1px solid var(--line); margin:0 0 16px;">
+
+    <ul class="workout">
+      <li><b>Glute Bridge</b><span>3 × 15–20</span></li>
+      <li><b>Bodyweight Squat</b><span>3 × 15–17</span></li>
+      <li><b>Reverse Lunge</b><span>3 × 12–14</span></li>
+      <li><b>Wall Sit</b><span>3 sets</span></li>
+      <li><b>Single-Leg Glute Bridge</b><span>3 × 12–15</span></li>
+      <li><b>Calf Raise</b><span>3 × 15–20</span></li>
+    </ul>
+    <p class="fineprint">
+      Wednesday · Legs &amp; Glutes — one day from a Workout Program. Build
+      yours around the equipment you actually have, and swap any exercise.
+    </p>
+
+    <div class="stores">
+      <a href="https://apps.apple.com/us/app/swithai/id6783848103" aria-label="Download on the App Store">
+        <img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="143" height="48">
+      </a>
+      <a class="gplay" href="https://play.google.com/store/apps/details?id=com.wellnesschampion.app" target="_blank" rel="noopener">
+        <img src="/assets/google-play-badge.png" alt="GET IT ON Google Play" width="185" height="71">
+      </a>
+    </div>
+  </div>
     </div>
   </section>
 
