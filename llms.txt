@@ -16,7 +16,7 @@ swithAI is built and published by Jason Abbamonte LLC.
 - Cardio & Activities: track cardio and daily activity
 - Mind & Wellness: track mood, sleep, breathing and recovery practices
 - Goal: set a goal and follow a plan across the four pillars
-- Supporting the pillars: Progress (weekly trends across the four pillars) and Health Sync (reads Apple Health and Health Connect, never writes back)
+- Supporting the pillars: Goal (a goal with a target date and a plan across the four pillars), Progress (weekly trends across the four pillars) and Health Sync (reads Apple Health and Health Connect, never writes back)
 
 ## Company and support
 
