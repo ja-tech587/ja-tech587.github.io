@@ -186,9 +186,9 @@
   .store-note { font-size: 0.8rem; color: rgba(255,255,255,0.55); margin: 0 0 14px; }
 
   /* ── Screens ── */
-  .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
   .shots figure { margin: 0; text-align: center; }
-  .shots .phone { width: 200px; border-radius: 30px; }
+  .shots .phone { width: 100%; max-width: 200px; border-radius: 30px; }
   .shots figcaption { margin-top: 12px; color: var(--dim); font-size: 0.9rem; }
 
   /* ── Pricing ── */
@@ -236,6 +236,7 @@
   footer .copy { margin: 16px 0 0; }
 
   @media (max-width: 800px) {
+    .shots { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
     .feat-grid, .feat-grid.pillars { grid-template-columns: repeat(2, 1fr); }
     .feat-grid.supporting { grid-template-columns: 1fr; }
   }
@@ -400,7 +401,7 @@
     <div class="wrap">
       <p class="kicker">What it does</p>
       <h2>Four pillars, one picture.</h2>
-      <p class="sub">Each part of the day gets its own home, and the Progress tab reads them together.</p>
+      <p class="sub">Each part of the day gets its own home, and Progress reads them together.</p>
       <div class="feat-grid pillars">
         <article class="feat" style="--accent: var(--gold)">
           <h3>Training</h3>
@@ -495,13 +496,19 @@
     <div class="wrap">
       <p class="kicker">In the app</p>
       <h2>Beyond the workout.</h2>
-      <p class="sub">Three real screens from swithAI, showing the founder's own logged data.</p>
+      <p class="sub">Real screens from swithAI. The Nutrition and Progress screens show the founder's own logged data.</p>
       <div class="shots">
         <figure>
           <div class="phone">
             <img class="shot" src="/assets/screens/nutrition-today-macros.jpg" width="600" height="1301" loading="lazy" alt="The swithAI Nutrition screen showing one logged day: a ring reading 1,774 of 2,100 kcal, and bars for protein, carbs, fat, fiber, total sugar and added sugar, each against its target">
           </div>
           <figcaption>Nutrition — one logged day, seven macro fields against the targets set in the app</figcaption>
+        </figure>
+        <figure>
+          <div class="phone">
+            <img class="shot" src="/assets/screens/activities-browse-all.jpg" width="600" height="1301" loading="lazy" alt="The swithAI Cardio and Activities Browse All screen: a search field, Low, Moderate and Intense filters, and a list of activities including Cycling, Dancing, Hiking, Light Yoga, Morning Walk, Pilates, Stretching and Swimming, each with a suggested duration and intensity">
+          </div>
+          <figcaption>Cardio &amp; Activities — browse activities by intensity, each with a suggested duration</figcaption>
         </figure>
         <figure>
           <div class="phone">
@@ -554,7 +561,7 @@
           <a class="btn" href="#download">Start free trial</a>
         </div>
       </div>
-      <p class="note renew"><b>Trial and renewal.</b> 7-day free trial, then $2.99/month for swithAI or $4.99/month for swithAI Plus. One free trial per person, across both plans. Subscriptions renew automatically each month until you cancel; cancel in your App Store or Google Play settings at least 24 hours before the trial or current period ends to avoid the next charge. Prices are in USD; your local price may vary and is shown in the store before you subscribe. Full terms in section 11 of the <a href="/terms.html">Terms of Service</a>.</p>
+      <p class="note renew"><b>Trial and renewal.</b> 7-day free trial, then $2.99/month for swithAI or $4.99/month for swithAI Plus. One free trial per person, across both plans. Annual billing is also available, at the price the store shows before you subscribe. Subscriptions renew automatically at the end of each billing period, monthly or yearly, until you cancel; cancel in your App Store or Google Play settings at least 24 hours before the trial or current period ends to avoid the next charge. Prices are in USD; your local price may vary and is shown in the store before you subscribe. Full terms in section 11 of the <a href="/terms.html">Terms of Service</a>.</p>
     </div>
   </section>
 
