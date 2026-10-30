@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>swithAI — Wellness, tracked simply</title>
-<meta name="description" content="swithAI keeps training, nutrition, activity, and mind &amp; wellness in one place, so the whole picture is easier to see than any single number. On iPhone and Android, with a 7-day free trial.">
+<meta name="description" content="swithAI keeps training, nutrition, cardio &amp; activities, and mind &amp; wellness in one place, so the whole picture is easier to see than any single number. On iPhone and Android, with a 7-day free trial.">
 <link rel="canonical" href="https://getswith.com/">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/assets/icon-512.png">
@@ -14,14 +14,14 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="swithAI">
 <meta property="og:title" content="swithAI — Wellness, tracked simply">
-<meta property="og:description" content="Training, nutrition, activity, and mind &amp; wellness in one place. On iPhone and Android, with a 7-day free trial.">
+<meta property="og:description" content="Training, nutrition, cardio &amp; activities, and mind &amp; wellness in one place. On iPhone and Android, with a 7-day free trial.">
 <meta property="og:url" content="https://getswith.com/">
 <meta property="og:image" content="https://getswith.com/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="swithAI — Wellness, tracked simply">
-<meta name="twitter:description" content="Training, nutrition, activity, and mind &amp; wellness in one place. On iPhone and Android, with a 7-day free trial.">
+<meta name="twitter:description" content="Training, nutrition, cardio &amp; activities, and mind &amp; wellness in one place. On iPhone and Android, with a 7-day free trial.">
 <meta name="twitter:image" content="https://getswith.com/assets/og.png">
 
 <style>
@@ -179,6 +179,11 @@
   .feat h3 { margin: 0 0 4px; font-size: 1rem; }
   .feat p { margin: 0; font-size: 0.9rem; color: var(--faint); }
   .health-note { margin: 18px 0 0; font-size: 0.95rem; }
+  .feat-grid.pillars { grid-template-columns: repeat(4, 1fr); }
+  .support-label { font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); font-weight: 700; margin: 28px 0 10px; }
+  .feat-grid.supporting { grid-template-columns: repeat(2, 1fr); align-items: start; }
+  .feat.support { background: transparent; border-left-width: 1px; }
+  .store-note { font-size: 0.8rem; color: rgba(255,255,255,0.55); margin: 0 0 14px; }
 
   /* ── Screens ── */
   .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -199,7 +204,8 @@
   .tier li::before { content: "✓"; position: absolute; left: 2px; color: var(--green); font-weight: 700; }
   .tier li.plus::before { color: var(--gold); }
   .tier .btn { margin-top: auto; align-self: flex-start; }
-  .renew { font-size: 0.8rem; color: var(--faint); margin: 14px 0 0; }
+  .renew { font-size: 0.85rem; color: var(--dim); margin: 14px 0 0; }
+  .renew b { color: var(--text); }
 
   /* ── FAQ ── */
   .faq details { border-top: 1px solid var(--line); padding: 4px 0; }
@@ -230,7 +236,7 @@
   footer .copy { margin: 16px 0 0; }
 
   @media (max-width: 800px) {
-    .feat-grid { grid-template-columns: repeat(2, 1fr); }
+    .feat-grid, .feat-grid.pillars { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 640px) {
     .site-nav { display: none; }
@@ -255,7 +261,7 @@
     .lede { font-size: 1.05rem; }
   }
   @media (max-width: 480px) {
-    .feat-grid { grid-template-columns: 1fr; }
+    .feat-grid, .feat-grid.pillars, .feat-grid.supporting { grid-template-columns: 1fr; }
   }
   .example {
     background: var(--panel); border: 1px solid var(--line);
@@ -284,7 +290,7 @@
   "name": "swithAI",
   "applicationCategory": "HealthApplication",
   "operatingSystem": "iOS, Android",
-  "description": "An AI-powered fitness and wellness app that brings training, nutrition, activity, and mind and wellness tracking into one app, with goal-based coaching.",
+  "description": "An AI-powered fitness and wellness app that brings training, nutrition, cardio and activities, and mind and wellness tracking into one app, with goal-based coaching.",
   "url": "https://getswith.com",
   "downloadUrl": [
     "https://apps.apple.com/us/app/swithai/id6783848103",
@@ -351,19 +357,20 @@
       <p class="wordmark">swithAI</p>
       <p class="kicker">Move · Fuel · Rest</p>
       <h1>Wellness, tracked simply.</h1>
-      <p class="lede">Training, nutrition, activity, and mind &amp; wellness — all in one place.</p>
+      <p class="lede">Training, nutrition, cardio &amp; activities, and mind &amp; wellness — all in one place.</p>
       <div class="stores">
-        <a href="https://apps.apple.com/us/app/swithai/id6783848103" aria-label="Download on the App Store">
+        <a href="https://apps.apple.com/us/app/swithai/id6783848103" aria-label="Download swithAI for iPhone on the App Store">
           <img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="143" height="48">
         </a>
-        <a class="gplay" href="https://play.google.com/store/apps/details?id=com.wellnesschampion.app" target="_blank" rel="noopener">
+        <a class="gplay" href="https://play.google.com/store/apps/details?id=com.wellnesschampion.app" target="_blank" rel="noopener" aria-label="Get swithAI for Android on Google Play (opens in a new tab)">
           <img src="/assets/google-play-badge.png" alt="GET IT ON Google Play" width="185" height="71">
         </a>
       </div>
+      <p class="store-note">iPhone: App Store &nbsp;·&nbsp; Android: Google Play</p>
       <p class="microtrust">
         <span>7-day free trial</span> &nbsp;·&nbsp; <span>iPhone &amp; Android</span> &nbsp;·&nbsp;
         <span>Reads Apple Health and Health Connect, never writes back</span>
-        <span class="langs">&nbsp;·&nbsp; In English, <span lang="es">Español</span>, <span lang="fr">Français</span>, <span lang="hi">हिन्दी</span> &amp; <span lang="zh-Hans">中文</span></span>
+        <span class="langs">&nbsp;·&nbsp; App in English, <span lang="es">Español</span>, <span lang="fr">Français</span>, <span lang="hi">हिन्दी</span> &amp; <span lang="zh-Hans">中文</span></span>
       </p>
     </div>
 
@@ -393,7 +400,7 @@
       <p class="kicker">What it does</p>
       <h2>Four pillars, one picture.</h2>
       <p class="sub">Each part of the day gets its own home, and the Progress tab reads them together.</p>
-      <div class="feat-grid">
+      <div class="feat-grid pillars">
         <article class="feat" style="--accent: var(--gold)">
           <h3>Training</h3>
           <p>Log workouts — exercises, sets, reps, weight, and how hard it felt.</p>
@@ -403,20 +410,23 @@
           <p>Search a food database, enter meals manually, and track macros and hydration.</p>
         </article>
         <article class="feat" style="--accent: var(--terra)">
-          <h3>Activity</h3>
+          <h3>Cardio &amp; Activities</h3>
           <p>Steps, cardio sessions, and daily goals shown as rings.</p>
         </article>
         <article class="feat" style="--accent: var(--azure)">
           <h3>Mind &amp; Wellness</h3>
           <p>Breathing sessions, stretching and mobility routines, mood and sleep logs.</p>
         </article>
-        <article class="feat" style="--accent: var(--gold)">
+      </div>
+      <p class="support-label">Supporting the four pillars</p>
+      <div class="feat-grid supporting">
+        <article class="feat support" style="--accent: var(--gold)">
           <h3>Progress</h3>
-          <p>Weekly trends and suggestions drawn from what you have actually logged.</p>
+          <p>Weekly trends and suggestions drawn from what you have actually logged across the four pillars.</p>
         </article>
-        <article class="feat" style="--accent: var(--faint)">
-          <h3>Health sync</h3>
-          <p>Steps, active energy, water and sleep arrive from Apple Health on iPhone and Health Connect on Android. Read-only — never written back.</p>
+        <article class="feat support" style="--accent: var(--faint)">
+          <h3>Health Sync</h3>
+          <p>Reads Apple Health on iPhone and Health Connect on Android, only for the types you allow: steps, active energy, water and sleep, plus weight and height when you ask. Heart rate, heart-rate variability, resting heart rate and workouts — and VO₂ max on iPhone — power the Readiness view and stay on your device. Nothing is ever written back.</p>
         </article>
       </div>
     </div>
@@ -460,59 +470,56 @@
     </p>
 
     <div class="stores">
-      <a href="https://apps.apple.com/us/app/swithai/id6783848103" aria-label="Download on the App Store">
+      <a href="https://apps.apple.com/us/app/swithai/id6783848103" aria-label="Download swithAI for iPhone on the App Store">
         <img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="143" height="48">
       </a>
-      <a class="gplay" href="https://play.google.com/store/apps/details?id=com.wellnesschampion.app" target="_blank" rel="noopener">
+      <a class="gplay" href="https://play.google.com/store/apps/details?id=com.wellnesschampion.app" target="_blank" rel="noopener" aria-label="Get swithAI for Android on Google Play (opens in a new tab)">
         <img src="/assets/google-play-badge.png" alt="GET IT ON Google Play" width="185" height="71">
       </a>
     </div>
+      <p class="store-note">iPhone: App Store &nbsp;·&nbsp; Android: Google Play</p>
   </div>
     </div>
   </section>
 
-  <!-- 4 · Product screenshots: intentionally not shipped until real app
-       screens exist. Drop three PNGs at /assets/screens/{workout-log,
-       activity-rings,weekly-trends}.png and uncomment. No placeholder
-       frames go live.
+  <!-- 4 · Product screenshots: real App Store-build captures (Aug 28, 2026)
+       from the swithai-marketing vault, assets/screens/, tier A and marked
+       marketing-safe in its manifest. They show the founder's own logged
+       data: caption them as one person's log, never as targets or advice. -->
   <section id="screens">
     <div class="wrap">
       <p class="kicker">In the app</p>
-      <h2>Log it, see it, adjust.</h2>
-      <p class="sub">A workout as you did it, today's rings, and the week's trend — the same three views you'll open most.</p>
+      <h2>Beyond the workout.</h2>
+      <p class="sub">Three real screens from swithAI, showing the founder's own logged data.</p>
       <div class="shots">
         <figure>
           <div class="phone">
-            <div class="mark"><img src="/assets/icon-512.png" alt=""><small>Workout log</small></div>
-            <img class="shot" src="/assets/screens/workout-log.png" alt="The workout log: an exercise with its sets, reps and weight" onerror="this.remove()">
+            <img class="shot" src="/assets/screens/nutrition-today-macros.jpg" width="600" height="1301" loading="lazy" alt="The swithAI Nutrition screen showing one logged day: a ring reading 1,774 of 2,100 kcal, and bars for protein, carbs, fat, fiber, total sugar and added sugar, each against its target">
           </div>
-          <figcaption>Workout log</figcaption>
+          <figcaption>Nutrition — one logged day, seven macro fields against the targets set in the app</figcaption>
         </figure>
         <figure>
           <div class="phone">
-            <div class="mark"><img src="/assets/icon-512.png" alt=""><small>Activity rings</small></div>
-            <img class="shot" src="/assets/screens/activity-rings.png" alt="Today's activity rings: steps and active minutes against the daily goals" onerror="this.remove()">
+            <img class="shot" src="/assets/screens/wellness-stretching-list.jpg" width="600" height="1301" loading="lazy" alt="The swithAI Mind and Wellness stretching screen: Stretching, Mobility and Balance tabs, 5, 10 and 15 minute guided session buttons, and a list of stretches with a hold time for each">
           </div>
-          <figcaption>Activity rings</figcaption>
+          <figcaption>Mind &amp; Wellness — guided stretching, with a hold time for each stretch</figcaption>
         </figure>
         <figure>
           <div class="phone">
-            <div class="mark"><img src="/assets/icon-512.png" alt=""><small>Weekly trends</small></div>
-            <img class="shot" src="/assets/screens/weekly-trends.png" alt="The Progress tab: the week's trends and suggestions" onerror="this.remove()">
+            <img class="shot" src="/assets/screens/progress-swith-score.jpg" width="600" height="1301" loading="lazy" alt="The swithAI Progress screen for the week of August 24 to 30: a swith score of 41 out of 100 labelled Building, broken down into Fitness 15 of 30, Nutrition 23 of 25, Activity 0 of 20, Mind and Wellness 0 of 15, and Consistency 3 of 10, with Smart Suggestions below">
           </div>
-          <figcaption>Weekly trends</figcaption>
+          <figcaption>Progress — one real week, the swith score broken down pillar by pillar from what was logged</figcaption>
         </figure>
       </div>
     </div>
   </section>
-  -->
 
   <!-- 5 · Pricing: what swithAI includes and what Plus adds, as the app's own paywall lists them. -->
   <section id="pricing">
     <div class="wrap">
       <p class="kicker">Pricing</p>
       <h2>Try it free for 7 days.</h2>
-      <p class="sub">Both plans start with a 7-day free trial. Cancel anytime in your App Store or Google Play settings.</p>
+      <p class="sub">Both plans start with a 7-day free trial. There is no free tier.</p>
       <div class="tiers">
         <div class="tier">
           <h3>swithAI</h3>
@@ -542,7 +549,7 @@
           <a class="btn" href="#download">Start free trial</a>
         </div>
       </div>
-      <p class="renew">Prices in USD; your local price is shown in the App Store or Google Play before you subscribe. Subscriptions renew monthly until cancelled. One free trial per person.</p>
+      <p class="note renew"><b>Trial and renewal.</b> 7-day free trial, then $2.99/month for swithAI or $4.99/month for swithAI Plus. One free trial per person, across both plans. Subscriptions renew automatically each month until you cancel; cancel in your App Store or Google Play settings at least 24 hours before the trial or current period ends to avoid the next charge. Prices are in USD; your local price may vary and is shown in the store before you subscribe. Full terms in section 11 of the <a href="/terms.html">Terms of Service</a>.</p>
     </div>
   </section>
 
@@ -554,7 +561,8 @@
       <p class="sub">The things people ask first.</p>
       <details>
         <summary>Is my health data private?</summary>
-        <p>Yes. swithAI reads steps, active energy, water and sleep from Apple Health or Health Connect and never writes anything back. We do not sell, rent or share your personal data, and you can ask for everything to be deleted at any time. The details are in the <a href="/privacy.html">Privacy Policy</a>.</p>
+        <p>swithAI reads Apple Health or Health Connect only for the types you allow, and never writes anything back. Steps, active energy, water, sleep, and weight and height if you choose to read them, are stored in your account. Heart rate, heart-rate variability, resting heart rate, workouts and, on iPhone, VO₂ max are read on your device and are not uploaded to our servers.</p>
+        <p>We do not sell your personal data. We provide data to service providers only as described in the Privacy Policy so they can operate services for us: OpenAI for the AI features, FatSecret and USDA FoodData Central for food lookup, Google (Firebase and Maps) for sign-in, crash reports and the run map, and RevenueCat to verify your subscription. Each receives only what its function needs. Deleting your account removes your data from our backend, apart from the record that enforces one free trial per person. The details are in the <a href="/privacy.html">Privacy Policy</a>.</p>
       </details>
       <details>
         <summary>Which phones does it work on?</summary>
@@ -562,7 +570,7 @@
       </details>
       <details>
         <summary>How much does it cost?</summary>
-        <p>swithAI is $2.99 a month and swithAI Plus is $4.99 a month, and both start with a 7-day free trial. swithAI covers logging, Health sync, streaks, history, a planner that runs a week ahead and a one-week meal planner with its grocery list. swithAI Plus takes the planner out to 52 weeks, adds generated training plans and the workout recommender, and plans meals up to 4 weeks ahead. Prices are in USD; your local price is shown in the store before you subscribe. Cancel anytime in your App Store or Google Play settings.</p>
+        <p>swithAI is $2.99 a month and swithAI Plus is $4.99 a month, and both start with a 7-day free trial. swithAI covers logging, Health sync, streaks, history, a planner that runs a week ahead and a one-week meal planner with its grocery list. swithAI Plus takes the planner out to 52 weeks, adds generated training plans and the workout recommender, and plans meals up to 4 weeks ahead. Trial, renewal and cancellation terms are in the note under <a href="#pricing">Pricing</a>.</p>
       </details>
       <details>
         <summary>Does it replace my doctor or dietitian?</summary>
@@ -608,13 +616,14 @@
       <h2>See the whole picture.</h2>
       <p class="lede">Download swithAI on iPhone and Android and start your 7-day free trial.</p>
       <div class="stores">
-        <a href="https://apps.apple.com/us/app/swithai/id6783848103" aria-label="Download on the App Store">
+        <a href="https://apps.apple.com/us/app/swithai/id6783848103" aria-label="Download swithAI for iPhone on the App Store">
           <img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="143" height="48">
         </a>
-        <a class="gplay" href="https://play.google.com/store/apps/details?id=com.wellnesschampion.app" target="_blank" rel="noopener">
+        <a class="gplay" href="https://play.google.com/store/apps/details?id=com.wellnesschampion.app" target="_blank" rel="noopener" aria-label="Get swithAI for Android on Google Play (opens in a new tab)">
           <img src="/assets/google-play-badge.png" alt="GET IT ON Google Play" width="185" height="71">
         </a>
       </div>
+      <p class="store-note">iPhone: App Store &nbsp;·&nbsp; Android: Google Play</p>
     </div>
   </section>
 </main>
