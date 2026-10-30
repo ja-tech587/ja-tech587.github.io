@@ -181,7 +181,7 @@
   .health-note { margin: 18px 0 0; font-size: 0.95rem; }
   .feat-grid.pillars { grid-template-columns: repeat(4, 1fr); }
   .support-label { font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); font-weight: 700; margin: 28px 0 10px; }
-  .feat-grid.supporting { grid-template-columns: repeat(2, 1fr); align-items: start; }
+  .feat-grid.supporting { grid-template-columns: repeat(3, 1fr); }
   .feat.support { background: transparent; border-left-width: 1px; }
   .store-note { font-size: 0.8rem; color: rgba(255,255,255,0.55); margin: 0 0 14px; }
 
@@ -237,6 +237,7 @@
 
   @media (max-width: 800px) {
     .feat-grid, .feat-grid.pillars { grid-template-columns: repeat(2, 1fr); }
+    .feat-grid.supporting { grid-template-columns: 1fr; }
   }
   @media (max-width: 640px) {
     .site-nav { display: none; }
@@ -420,6 +421,10 @@
       </div>
       <p class="support-label">Supporting the four pillars</p>
       <div class="feat-grid supporting">
+        <article class="feat support" style="--accent: var(--green)">
+          <h3>Goal</h3>
+          <p>Set a goal with a target and a date, and swithAI builds a plan across the four pillars: daily calorie and macro targets, weekly training, activity and wellness targets, and a summary at the end of each week. Skip, swap or move any day.</p>
+        </article>
         <article class="feat support" style="--accent: var(--gold)">
           <h3>Progress</h3>
           <p>Weekly trends and suggestions drawn from what you have actually logged across the four pillars.</p>
