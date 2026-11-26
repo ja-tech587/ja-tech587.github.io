@@ -216,6 +216,16 @@
   .faq details[open] summary::after { content: "–"; }
   .faq p { margin: 0 0 14px; font-size: 0.95rem; }
 
+  /* ── Testimonial ── */
+  .testimonial { margin: 0; max-width: 760px; }
+  .testimonial blockquote {
+    margin: 0; padding: 4px 0 4px 22px; border-left: 3px solid var(--gold);
+    font-size: 1.2rem; line-height: 1.55; color: var(--text); letter-spacing: -0.005em;
+  }
+  .testimonial blockquote p { margin: 0; color: inherit; }
+  .testimonial figcaption { margin: 14px 0 0 25px; font-size: 0.9rem; color: var(--dim); }
+  @media (max-width: 720px) { .testimonial blockquote { font-size: 1.08rem; padding-left: 16px; } .testimonial figcaption { margin-left: 19px; } }
+
   /* ── Safety + company ── */
   .note {
     background: var(--panel); border: 1px solid var(--line);
@@ -397,6 +407,18 @@
     </div>
   </section>
   -->
+
+  <!-- 2b · Physician quote -->
+  <section id="testimonial" aria-label="What a physician says">
+    <div class="wrap">
+      <figure class="testimonial">
+        <blockquote>
+          <p>“swithAI brings your weight, waist, steps, sleep and resting heart rate together from Apple Health or Health Connect”</p>
+        </blockquote>
+        <figcaption>— Vlad Stojanovic, MD</figcaption>
+      </figure>
+    </div>
+  </section>
 
   <!-- 3 · Features: the existing copy, as real headings. -->
   <section id="features">
